@@ -21,7 +21,6 @@ namespace WebFormsLegoShop
 
             // Initialize the product database.
             Database.SetInitializer(new LegoDBInitializer());
-
         }
     }
 }

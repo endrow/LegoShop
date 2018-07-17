@@ -50,7 +50,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+                   <%-- <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>--%>
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/Products/Index">Products</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Categories</a>
