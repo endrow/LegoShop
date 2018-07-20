@@ -48,10 +48,10 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="Pages/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="Pages/About">About</a></li>
                    <%-- <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>--%>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Products/Index">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="Pages/Products/Index">Products</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Categories</a>
                         <div class="dropdown-menu" id="CategoryMenu">
@@ -60,14 +60,14 @@
                                 runat="server"
                                 SelectMethod="GetCategories">
                                 <ItemTemplate>
-                                    <a class="dropdown-item" href="/Products/Index.aspx?id=<%#: Item.CategoryID %>">
+                                    <a class="dropdown-item" href="Pages/Products/Index.aspx?id=<%#: Item.CategoryID %>">
                                         <%#: Item.CategoryName %>
                                     </a>
                                 </ItemTemplate>
                             </asp:ListView>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/ShoppingCart" ID="cartCount">&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="Pages/User/ShoppingCart" ID="cartCount">&nbsp;</a></li>
                 </ul>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>

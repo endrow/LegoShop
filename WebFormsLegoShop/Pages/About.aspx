@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="~/Site.Master.cs" Inherits="WebFormsLegoShop.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <img src="Images/about.jpg" class="about-image" />
+    <img src="../Images/about.jpg" class="about-image" />
     <h2><%: Title %></h2>
     <p>This is our LEGO webshop, where you can find a lot of different LEGO for your friends (or foes).</p>
     <p>In the Products menu you can find all of our products.</p>
@@ -15,7 +15,7 @@
         runat="server"
         SelectMethod="GetCategories">
         <ItemTemplate>
-            <a href="/Products/Index.aspx?id=<%#: Item.CategoryID %>">
+            <a href="Pages/Products/Index.aspx?id=<%#: Item.CategoryID %>">
                 <%#: Item.CategoryName %>
             </a>
             <p>

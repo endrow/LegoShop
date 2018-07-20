@@ -4,6 +4,6 @@
     <div class="text-center">
         <h1><%: Title %></h1>
         <h2>LEGO Shop can help you find the perfect gift.</h2>
-        <img src="Images/default.jpg" class="rounded mx-auto d-block greeting-image" />
+        <img src="../Images/default.jpg" class="rounded mx-auto d-block greeting-image" />
     </div>
 </asp:Content>
