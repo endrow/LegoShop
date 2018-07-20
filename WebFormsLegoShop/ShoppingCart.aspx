@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="WebFormsLegoShop.ShoppingCart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div id="ShoppingCartTitle" runat="server" class="ContentHead"><h1>Shopping Cart</h1></div>
+    <div>The cart items are only stored if you are registered and logged in, 
+        and only for <% Response.Write(ConfigurationManager.AppSettings["RemoveCartItemsMaxDayCount"]); %> days! If you are not logged in and leave the site the cart will empty itself!</div>
     <asp:GridView ID="CartList" runat="server" AutoGenerateColumns="False" ShowFooter="True" GridLines="Vertical" CellPadding="4"
         ItemType="WebFormsLegoShop.Models.CartItem" SelectMethod="GetShoppingCartItems"  
         CssClass="table table-striped table-bordered" >   
         <Columns>
         <asp:BoundField DataField="ProductID" HeaderText="ID" SortExpression="ProductID" />        
         <asp:BoundField DataField="Product.ProductName" HeaderText="Name" />        
-        <asp:BoundField DataField="Product.UnitPrice" HeaderText="Price (each)" DataFormatString="{0:c}"/>     
+        <asp:BoundField DataField="Product.UnitPrice" HeaderText="Price (each)" DataFormatString="{0}"/>     
         <asp:TemplateField   HeaderText="Quantity">            
                 <ItemTemplate>
                     <asp:TextBox ID="PurchaseQuantity" Width="40" runat="server" Text="<%#: Item.Quantity %>"></asp:TextBox> 
@@ -15,7 +17,7 @@
         </asp:TemplateField>    
         <asp:TemplateField HeaderText="Item Total">            
                 <ItemTemplate>
-                    <%#: String.Format("{0:c}", ((Convert.ToDouble(Item.Quantity)) *  Convert.ToDouble(Item.Product.UnitPrice)))%>
+                    <%#: String.Format("{0}$", ((Convert.ToDouble(Item.Quantity)) *  Convert.ToDouble(Item.Product.UnitPrice)))%>
                 </ItemTemplate>        
         </asp:TemplateField> 
         <asp:TemplateField HeaderText="Remove Item">            

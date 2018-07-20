@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using WebFormsLegoShop.Models;
@@ -57,9 +58,8 @@ namespace WebFormsLegoShop.Logic
                 }
                 else
                 {
-                    // Generate a new random GUID using System.Guid class.     
-                    Guid tempCartId = Guid.NewGuid();
-                    HttpContext.Current.Session[CartSessionKey] = tempCartId.ToString();
+                    // Generate a new random GUID using System.Guid class.
+                    HttpContext.Current.Session[CartSessionKey] = HttpContext.Current.Session.SessionID;
                 }
             }
             return HttpContext.Current.Session[CartSessionKey].ToString();
@@ -201,6 +201,30 @@ namespace WebFormsLegoShop.Logic
             public int ProductId;
             public int PurchaseQuantity;
             public bool RemoveItem;
+        }
+
+        /// <summary>
+        /// Removes the cart items from the database associated with the given sessionIds or if they are 
+        /// </summary>
+        /// <param name="dbToRemoveFrom"></param>
+        /// <param name="sessionId"></param>
+        public void RemoveCartItems(params string[] sessionIds)
+        {
+            int afterThatCountOfDaysTheItemGetsRemoved = int.Parse(ConfigurationManager.AppSettings["RemoveCartItemsMaxDayCount"]);
+
+            foreach (string sessionId in sessionIds)
+            {
+                List<CartItem> itemsToRemove = _db.ShoppingCartItems.AsEnumerable().Where(item => item.CartId == sessionId ||
+                item.DateCreated.AddDays(afterThatCountOfDaysTheItemGetsRemoved).CompareTo(DateTime.Now) < 0).ToList();
+
+
+                if (itemsToRemove != null && itemsToRemove.Count > 0)
+                {
+                    _db.ShoppingCartItems.RemoveRange(itemsToRemove);
+
+                }
+            }
+            _db.SaveChanges();
         }
 
         public void Dispose()

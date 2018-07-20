@@ -17,7 +17,7 @@
                         <b>Description:</b><br />
                         <%#:Item.Description %>
                         <br />
-                        <span><b>Price:</b>&nbsp;<%#: String.Format("{0:c}", Item.UnitPrice) %></span>
+                        <span><b>Price:</b>&nbsp;<%#: String.Format("{0}$", Item.UnitPrice) %></span>
                         <br />
                         <span><b>Product Number:</b>&nbsp;<%#:Item.ProductID %></span>
                         <br />

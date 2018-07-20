@@ -23,7 +23,7 @@ namespace WebFormsLegoShop
                 if (cartTotal > 0)
                 {
                     // Display Total.
-                    lblTotal.Text = String.Format("{0:c}", cartTotal);
+                    lblTotal.Text = String.Format("{0}$", cartTotal);
                 }
                 else
                 {
@@ -83,7 +83,7 @@ namespace WebFormsLegoShop
                 }
                 usersShoppingCart.UpdateShoppingCartDatabase(cartId, cartUpdates);
                 CartList.DataBind();
-                lblTotal.Text = String.Format("{0:c}", usersShoppingCart.GetTotal());
+                lblTotal.Text = String.Format("{0}$", usersShoppingCart.GetTotal());
                 return usersShoppingCart.GetCartItems();
             }
         }
